@@ -8,10 +8,10 @@ Building on a simple Ethernet framework provided, an DHCP client and a TCP appli
 
 The solution is implemented on a TM4C123GXL board using an ENC28J60 ethernet interface.
 
-2 Command-line Interface Requirements
+2 Command-line Interface (using putty software)
 
-The solution must provide a command-line interface using UART0 and configuring the device and reading
-out the status using Putty software. The command-line interface should support the following commands at a minimum:
+The solution is provided using a command-line interface using UART0 and configuring the device and reading
+out the status using Putty software. The command-line interface supports the following commands at a minimum:
 dhcp ON | OFF
 This command enables and disables DHCP mode and stores the mode persistently in EEPROM.
 dhcp dhcp REFRESH | RELEASE
@@ -26,7 +26,7 @@ address, and DNS address.
 reboot:
 This command restarts the microcontroller.
 
-3 Power-Up Requirements
+3 Power-Up 
 
 On power-up, the solution must initialize the clocks, UART, ethernet controller, and timer service.
 The DHCP mode must be retrieved from EEPROM on power-up. If the EEPROM has never been written,
@@ -35,14 +35,14 @@ value. If DHCP mode is disable, then static values for the IP address, subnet ma
 and DNS address should be retrieved from EEPROM.
 If DHCP mode is enabled, then a DHCP discovery process should start anew.
 
-4 Timer Service Requirements
+4 Timer Service 
 
 For server parts of the design, a timer service is needed. It can be implemented with systick or a generalpurpose
 timer. This should provide the ability to request a timer with a function callback. Applications of
 this include renew (T1) and rebind (T2) timers for DHCP, gratuitous ARP window after the ARP request
 send to test the DHCP offer, and DHCP broadcast repeat attempt timer for DHCP.
 
-5 DHCP Client Requirements
+5 DHCP Client 
 
 When DHCP is enabled, the solution must implement an DHCP client. The behavior of DHCP is detailed
 in RFC2131, will be discussed in class, and is summarized below.
@@ -63,14 +63,14 @@ timer is started with a period of T1 (usually 50% of the lease time).
 When a power cycle occurs, this process must be repeated.
 
 Renewal:
-If a T1 timeout occurs, a new timer with a period of T2 (87.5% of lease time) is started. the client should
+If a T1 timeout occurs, a new timer with a period of T2 (87.5% of lease time) is started. the client will
 start to send DHCP request to the DCHP server that granted the request above in an attempt to renew
-the DHCP assignment. It should repeat this regularly until the T2 timeout occurs.
+the DHCP assignment. It will repeat this regularly until the T2 timeout occurs.
 
 Rebinding:
 When a T2 timeout occurs, the client will attempt to rebind by sending a broadcast to all DHCP servers as
 in initialization.
 
-6 TCP Requirements
-The solution must implement a TCP state machine that implements server functionality (will be in passive
-open state) with support for at least one socket. Support a Telnet server (port 23) must be provided.
+6 TCP 
+The TCP state machine that implements server functionality (will be in passive
+open state) with support for at least one socket. Support a Telnet server (port 23) is provided.
