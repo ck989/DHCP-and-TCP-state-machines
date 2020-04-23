@@ -8,7 +8,7 @@ Aim:
 The aim of this project is to build the essential components of basic embedded ethernet appliances.
 
 The solution of this project is implemented on TM4C123GH6PM microcontroller along with ENC28J60 ethernet interface.
-ENC28J60 ethernet is interfaced with TM4C123GH6PM microcontroller using SSI interface or in other using SPI communication protocol.
+ENC28J60 ethernet is interfaced with TM4C123GH6PM microcontroller using SSI interface or in other words, using SPI communication protocol.
 SPI in TM4C123GH6PM microcontroller is called as SSI. 
 
 Hardware connections:
@@ -72,7 +72,7 @@ As soon as putty tenet session is turned on, TCP SYN will be sent to server or m
          
          All these functionalities are supported in our project.
          
- codes for TCP server state machines
+ codes for TCP server state machines:
  
  https://github.com/ck989/DHCP-and-TCP-state-machines/blob/master/workspace_v8/TCP%20DHCP/Dhcp%20Tcp%20state%20machines/ethernet.c
  https://github.com/ck989/DHCP-and-TCP-state-machines/blob/master/workspace_v8/TCP%20DHCP/Dhcp%20Tcp%20state%20machines/TCP.c
